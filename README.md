@@ -1,16 +1,42 @@
-# React + Vite
+# Work Sample Test - Fullstack Development & Business Systems
+**Nama:** Muammar Aufar Prasetya
+**Posisi:** System Developer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+//-----------------------------------------------//
+Soal #1: Optimasi Performa & State Management React
+//-----------------------------------------------//
 
-Currently, two official plugins are available:
+a. Diagnosa Teknis
+Penyebab utama *unnecessary re-render* pada dataset 5.000+ baris adalah mekanisme *default* React yang melakukan rekonsiliasi ke seluruh komponen turunan (*children*) setiap kali terjadi perubahan *state* pada komponen induk (*parent*). Jika satu item mengalami perubahan stok, komponen induk penyimpan *state* daftar produk akan berubah, memicu 5.000 evaluasi ulang di Virtual DOM. Ini membebani *main thread* browser dan menyebabkan *lag* yang parah.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+b. Cara Menjalankan Aplikasi (Mini App)
+Aplikasi telah diimplementasikan dalam folder `/src`. Untuk menjalankannya secara lokal:
+1. Jalankan `npm install`
+2. Jalankan `npm run dev`
+3. Buka tautan lokal yang muncul di terminal (biasanya http://localhost:5173)
 
-## React Compiler
+c. Strategi State Management
+Strategi yang saya terapkan agar *update* item individual tidak memicu *re-render global* adalah:
+1. Virtualization: Menggunakan pustaka `react-window` untuk membatasi *rendering* DOM hanya pada baris yang terlihat di *viewport*.
+2. Stable References: Menggunakan *hook* `useCallback` pada fungsi mutasi (*updater function*) seperti `onUpdate` agar referensi fungsinya tidak berubah pada setiap *re-render* komponen induk.
+3. Memoization Membungkus komponen anak (seperti `ProductRow`) dengan `React.memo` sehingga hanya komponen dengan *props* yang benar-benar berubah yang akan di-*render* ulang. Data dan fungsi yang diteruskan juga dibungkus dalam `useMemo`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Soal #2: Arsitektur Backend, Autentikasi JWT, & High-Concurrency Scaling
+*(Jawaban akan ditulis di sini)*
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Soal #3: Strategi Integrasi API, Webhook Reliability, & Resiliency
+*(Jawaban akan ditulis di sini)*
+
+---
+
+## Soal #4: Evaluasi TCO & Trade-off Monolith vs Microservices
+*(Jawaban akan ditulis di sini)*
+
+---
+
+## Soal #5: Prioritisasi Feature, Metrik Software, & Handling Tech Debt
+*(Jawaban akan ditulis di sini)*
