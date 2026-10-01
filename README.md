@@ -102,11 +102,8 @@ Ketika 100 *user* memperebutkan 1 sisa barang yang sama, kita harus menghindari 
 
 ### Diagram Arsitektur (Mermaid.js)
 
-graph TD
-    Client[Client App] -->|HTTPS| API_Gateway[API Gateway / Load Balancer]
-    API_Gateway --> Go_App[Golang Backend Service]
-    Go_App -->|Check JWT Blacklist| Redis[(Redis Cache)]
-    Go_App -->|Pessimistic Lock & Checkout| Postgres[(PostgreSQL DB)]
+<img width="402" height="539" alt="image" src="https://github.com/user-attachments/assets/f099c2ec-c56d-458b-aa7d-d2f8f0cf6012" />
+
 
 
 ---
